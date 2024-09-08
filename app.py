@@ -63,5 +63,16 @@ def download_file(filename):
     )
     return redirect(url)
 
+@app.route('/preview/<filename>')
+def preview_file(filename):
+    # Generate a pre-signed URL for secure access
+    url = s3.generate_presigned_url(
+        'get_object',
+        Params={'Bucket': S3_BUCKET, 'Key': filename},
+        ExpiresIn=3600  # URL expires in 1 hour
+    )
+    return render_template('preview.html', file_url=url, filename=filename)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

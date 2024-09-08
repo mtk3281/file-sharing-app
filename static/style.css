@@ -110,3 +110,18 @@ footer {
     height: 100px;
     object-fit: cover;
 }
+
+
+.preview-container {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.preview-container iframe {
+    border: none;
+}
+
+.preview-container img {
+    max-width: 100%;
+    height: auto;
+}

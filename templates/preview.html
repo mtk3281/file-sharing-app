@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview {{ filename }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Preview {{ filename }}</h1>
+    <div class="preview-container">
+        {% if filename.endswith('.pdf') %}
+            <iframe src="{{ file_url }}" width="100%" height="600px"></iframe>
+        {% elif filename.endswith('.png') or filename.endswith('.jpg') or filename.endswith('.jpeg') %}
+            <img src="{{ file_url }}" alt="Image Preview" style="max-width: 100%; height: auto;">
+        {% else %}
+            <p>Cannot preview this file type.</p>
+        {% endif %}
+    </div>
+    <a href="{{ file_url }}" download="{{ filename }}">Download {{ filename }}</a>
+    <br>
+    <a href="{{ url_for('index') }}">Back to File List</a>
+</body>
+</html>

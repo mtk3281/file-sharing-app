@@ -2,12 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import boto3
 import os
 from werkzeug.utils import secure_filename
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
-app.secret_key = 'supersecretkey'
-
-S3_BUCKET = 'S3 bucket name'
+# Use environment variables for configuration
+app.secret_key = os.getenv('SECRET_KEY')
+S3_BUCKET = os.getenv('S3_BUCKET')
 
 s3 = boto3.client('s3')
 

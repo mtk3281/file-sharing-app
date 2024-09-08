@@ -19,7 +19,7 @@ upload_folder = '/tmp'
 
 app.config['UPLOAD_FOLDER'] = upload_folder
 
-Allowed_Extensions = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+Allowed_Extensions = set(['txt', 'pdf', 'png', 'jpg', 'jpeg'])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in Allowed_Extensions

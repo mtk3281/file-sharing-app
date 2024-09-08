@@ -35,7 +35,7 @@
                     <img src="{{ url_for('static', filename='txt.png') }}" alt="Text File Icon">
                 {% elif file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg') %}
                     <a href="{{ url_for('preview_file', filename=file) }}">
-                        <img src="{{ url_for('preview_file', filename=file) }}" alt="Image Preview" class="image-preview">
+                        <img src="{{ url_for('preview_file', filename=file) }}" alt="Image Preview" class="image-preview" />
                     </a>
                 {% else %}
                     <img src="{{ url_for('static', filename='folder.png') }}" alt="File Icon">

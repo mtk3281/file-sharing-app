@@ -105,10 +105,13 @@ footer {
     margin-bottom: 5px;
 }
 
+
 .image-preview {
-    width: 100px;
-    height: 100px;
+    width: 100px; /* Adjust as needed */
+    height: auto;
     object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 

@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Preview {{ filename }}</h1>
     <div class="preview-container">
+        <h1>Preview {{ filename }}</h1>
         {% if filename.endswith('.pdf') %}
             <iframe src="{{ file_url }}" width="100%" height="600px"></iframe>
         {% elif filename.endswith('.png') or filename.endswith('.jpg') or filename.endswith('.jpeg') %}
-            <img src="{{ file_url }}" alt="Image Preview" style="max-width: 100%; height: auto;">
+            <img src="{{ file_url }}" alt="Image Preview" class="preview-image">
         {% else %}
             <p>Cannot preview this file type.</p>
         {% endif %}
+        <div class="buttons-container">
+            <a href="{{ file_url }}" download="{{ filename }}" class="btn">Download {{ filename }}</a>
+            <a href="{{ url_for('index') }}" class="btn">Back to File List</a>
+        </div>
     </div>
-    <a href="{{ file_url }}" download="{{ filename }}">Download {{ filename }}</a>
-    <br>
-    <a href="{{ url_for('index') }}">Back to File List</a>
 </body>
 </html>

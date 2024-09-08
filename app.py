@@ -29,7 +29,20 @@ def index():
     # List files in the S3 bucket
     s3_objects = s3.list_objects_v2(Bucket=S3_BUCKET)
     files = [obj['Key'] for obj in s3_objects.get('Contents', [])]
-    return render_template('index.html', files=files)
+    
+    # Generate pre-signed URLs for images
+    image_files = []
+    for file in files:
+        if file.endswith(('.png', '.jpg', '.jpeg')):
+            file_url = s3.generate_presigned_url(
+                'get_object',
+                Params={'Bucket': S3_BUCKET, 'Key': file},
+                ExpiresIn=3600  # URL expires in 1 hour
+            )
+            image_files.append({'name': file, 'url': file_url})
+    
+    return render_template('index.html', files=files, image_files=image_files)
+
 
 @app.route('/upload', methods=['POST'])
 def upload_file():

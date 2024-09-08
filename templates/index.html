@@ -24,7 +24,7 @@
         </div>
     {% endif %}
     {% endwith %}
-
+    
     <h2>Uploaded Files</h2>
     <div class="directory-container">
         {% for file in files %}
@@ -34,9 +34,13 @@
                 {% elif file.endswith('.txt') %}
                     <img src="{{ url_for('static', filename='txt.png') }}" alt="Text File Icon">
                 {% elif file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg') %}
-                    <a href="{{ url_for('preview_file', filename=file) }}">
-                        <img src="{{ url_for('preview_file', filename=file) }}" alt="Image Preview" class="image-preview" />
-                    </a>
+                    {% for image in image_files %}
+                        {% if image.name == file %}
+                            <a href="{{ url_for('preview_file', filename=file) }}">
+                                <img src="{{ image.url }}" alt="Image Preview" class="image-preview" />
+                            </a>
+                        {% endif %}
+                    {% endfor %}
                 {% else %}
                     <img src="{{ url_for('static', filename='folder.png') }}" alt="File Icon">
                 {% endif %}
@@ -44,6 +48,7 @@
             </div>
         {% endfor %}
     </div>
+    
 
     <footer>
         <p>&copy; 2024 File Sharing App. All rights reserved.</p>

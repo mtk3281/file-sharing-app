@@ -105,26 +105,48 @@ footer {
     margin-bottom: 5px;
 }
 
-
-.image-preview {
-    width: 100px; /* Adjust as needed */
-    height: auto;
-    object-fit: cover;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-
 .preview-container {
     text-align: center;
-    margin: 20px auto;
+    margin: 40px auto;
+    width: 70%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.preview-container iframe {
-    border: none;
-}
-
-.preview-container img {
-    max-width: 100%;
+/* Fixed size for preview image */
+.preview-image {
+    width: 400px; /* Fixed width for the preview image */
     height: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Buttons container */
+.buttons-container {
+    margin-top: 20px;
+}
+
+/* Styling for buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #2980b9;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #3498db;
+}
+
+/* Responsive iframe for PDFs */
+.preview-container iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
 }

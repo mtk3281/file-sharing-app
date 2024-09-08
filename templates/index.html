@@ -17,19 +17,26 @@
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
+        <div class="flash-messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
     {% endif %}
     {% endwith %}
 
     <h2>Uploaded Files</h2>
-    <ul>
+    <div class="directory-container">
         {% for file in files %}
-            <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
+            <div class="directory-item">
+                <img src="{{ url_for('static', filename='file-icon.png') }}" alt="File Icon">
+                <a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 File Sharing App. All rights reserved.</p>
+    </footer>
 </body>
 </html>
